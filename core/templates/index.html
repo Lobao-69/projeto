@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+{% endblock %}
+
+{% block main %}
+
+<div class="product-superuser">
+    {% if user.is_superuser %}
+        <a href="{% url 'create-product' %}">Criar Produto</a>
+        <a href="{% url 'products-edit' %}">Editar Produtos</a>
+    {% endif %}
+</div>
+
+<div class="filter">
+    <form action="{% url 'index' %}" method="GET" class="form-search">
+        <input type="text" id="input-filter" placeholder="Encontre o que procura em um piscar de olhos..." value="{{request.GET.busca}}" name="busca">
+        <select id="filter" name="filter">
+            <option value="">Categoria</option>
+            {% for categoria in categorias %}
+                <option value="{{categoria.name}}">{{categoria.name}}</option>
+            {% endfor %}
+        </select>
+        <button id="filter-pesquisar">Pesquisar</button>
+    </form>
+</div>
+
+
+<div class="cards-products">
+    {% if no_exists %}
+
+        <h2>Não foi encontrado nenhum resultado!</h2>
+
+        {% else %}
+        {% for produto in produtos %}
+            <div class="product-card">
+                <a href="{% url 'product' pk=produto.id %}" class="link-card">
+                    {% if produto.imagem %}
+                    <img src=" {{ produto.imagem.url }}" alt="">
+                    {% else %}
+                    <img src=" {% static 'img/no-image.png' %}" alt="">
+                    {% endif %}
+                    <div class="info-card">
+                        <p>{{produto.name}}</p>
+                        <p id="price">R$ {{produto.price}}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+</div>
+
+{% endblock main %}
+
+{% block footer %}
+
+    {% include 'footer.html' %}
+
+{% endblock %} 

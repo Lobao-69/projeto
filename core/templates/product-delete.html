@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/delete-product.css' %}">
+
+{% endblock %}
+
+{% block main %}
+
+<div class="product-superuser">
+    {% if user.is_superuser %}
+        <a href="{% url 'products-edit' %}">Editar Produtos</a>
+    {% endif %}
+</div>
+
+<div class="confirm-delete">
+    <h2>Você tem certeza que deseja excluir {{ object.name }}?</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Deletar</button>
+    </form>
+</div>
+
+<div class="cards-products">
+    {% for produto in produtos %}
+        <div class="product-card">
+            <a href="{% url 'product' pk=produto.id %}" class="link-card">
+                {% if produto.imagem %}
+                <img src=" {{ produto.imagem.url }}" alt="">
+                {% else %}
+                <img src=" {% static 'img/no-image.png' %}" alt="">
+                {% endif %}
+                <div class="info-card">
+                    <p>{{produto.name}}</p>
+                    <p id="price">R$ {{produto.price}}</p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock main %}

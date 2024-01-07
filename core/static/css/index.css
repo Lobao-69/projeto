@@ -1,0 +1,122 @@
+main{
+    background-color: #DEDEDE;
+    width: 100%;
+    padding-bottom: 10em;
+}
+/* Form Filter */
+
+.form-search {
+    display: flex;
+    gap: 1em;
+    width: 100%;
+}
+
+.filter{
+    padding: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+#login{
+    padding: 1rem;
+    border-radius: 12px;
+    background: #2f44ff45;
+    text-decoration: none;
+    color: black;
+}
+
+#filter{
+    padding: 1rem;
+    border: 1.5px solid #2F44FF;
+    border-radius: 0.3rem;
+    background: none;
+    text-align: center;
+    color: #2F44FF;
+    font-weight: bold;
+}
+
+#filter-pesquisar{
+    border-radius: .3em;
+    background: #2F44FF;
+    padding: 1rem;
+    color: wheat;
+    text-align: center;
+}
+
+#input-filter{
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0.3rem;
+}
+
+#input-filter::placeholder {
+    font-weight: bold;
+}
+
+/* Products */
+
+.cards-products{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+    margin-top: 2rem;
+    max-width: 1000px;
+    row-gap: 3em;
+    column-gap: 3em;
+}
+
+.product-card{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 100%;
+    height: auto;
+}
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+}
+
+.product-card .link-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+}
+
+.info-card {
+    padding: 0.8em;
+    text-align: center;
+}
+
+.info-card p {
+    color: #000532;
+    font-weight: bold;
+    text-align: left;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+@media (max-width: 1040px) {
+    .cards-products {
+        grid-template-columns: repeat(3, 300px);
+        row-gap: 0;
+        column-gap: 0;
+        gap: 1em;
+    }
+}
+
+@media (max-width: 970px) {
+    .cards-products {
+        grid-template-columns: repeat(2, 300px);
+    }
+}

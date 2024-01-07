@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product-edit.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<div class="product-superuser">
+    {% if user.is_superuser %}
+        <a href="{% url 'create-product' %}">Criar Produto</a>
+    {% endif %}
+</div>
+
+<div class="filter">
+    <form action="." method="GET" class="form-search">
+        {% csrf_token %}
+        <input type="text" id="input-filter" placeholder="Encontre o que procura em um piscar de olhos..." value="{{request.GET.busca}}" name="busca">
+        <button id="filter-pesquisar">Pesquisar</button>
+    </form>
+</div>
+
+
+<div class="cards-products">
+    {% for produto in produtos %}
+    <div class="product-card">
+        <div class="link-card">
+            {% if produto.imagem %}
+            <img src=" {{ produto.imagem.url }}" alt="">
+            {% else %}
+            <img src=" {% static 'img/no-image.png' %}" alt="">
+            {% endif %}
+            <div class="edit-product">
+                <a href="{% url 'product-delete' pk=produto.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                    <path d="M33.125 8.83333H44.1667V13.25H39.75V41.9583C39.75 43.178 38.7613 44.1667 37.5417 44.1667H6.625C5.40538 44.1667 4.41667 43.178 4.41667 41.9583V13.25H0V8.83333H11.0417V2.20833C11.0417 0.988715 12.0304 0 13.25 0H30.9167C32.1363 0 33.125 0.988715 33.125 2.20833V8.83333ZM15.4583 19.875V33.125H19.875V19.875H15.4583ZM24.2917 19.875V33.125H28.7083V19.875H24.2917ZM15.4583 4.41667V8.83333H28.7083V4.41667H15.4583Z" fill="#F4A28C"/>
+                  </svg></a>
+                <a href="{% url 'product-edit' pk=produto.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42" fill="none">
+                    <path d="M37.6665 27.5888V39.6004C37.6665 40.7417 36.7396 41.6667 35.5969 41.6667H2.23609C1.09309 41.6667 0.166504 40.7315 0.166504 39.5677V14.5833H12.6665C13.8171 14.5833 14.7498 13.6506 14.7498 12.5V0H35.5867C36.7355 0 37.6665 0.948563 37.6665 2.06625V9.91117L18.919 28.6588L18.9061 37.4896L27.7528 37.5025L37.6665 27.5888ZM39.2878 14.1825L42.234 17.1288L26.0294 33.3333L23.0788 33.329L23.0832 30.3871L39.2878 14.1825ZM0.166504 10.4167L10.5832 0.00662506V10.4167H0.166504Z" fill="white"/>
+                  </svg></a>
+            </div>
+            <div class="info-card">
+                <p>{{produto.name}}</p>
+                <p id="price">{{produto.price}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock main %}

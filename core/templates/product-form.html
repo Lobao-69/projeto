@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+
+{% endblock %}
+
+{% block main %}
+
+<div class="product-superuser">
+    {% if user.is_superuser %}
+        <a href="{% url 'create-product' %}">Criar Produto</a>
+    {% endif %}
+</div>
+
+<div class="product-container">
+    <div class="product-content">
+        {% if object.imagem %}
+        <img src=" {{ object.imagem.url }}" alt="">
+        {% else %}
+        <img src=" {% static 'img/no-image.png' %}" alt="">
+        {% endif %}
+        <div class="product">
+            <h1>Editando {{object.name}}</h1>
+            <form method="post" class="form-create-product" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button class="btn-product" type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock main %}
