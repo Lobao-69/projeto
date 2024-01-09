@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<div class="product-superuser">
+    {% if user.is_superuser %}
+        <a href="{% url 'products-edit' %}">Editar Produtos</a>
+    {% endif %}
+</div>
+
+<div class="product-container">
+    <div class="product-content">
+        <div class="product">
+            <h1>Criando um produto</h1>
+            <form method="post" enctype="multipart/form-data" class="form-create-product">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn-product" type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock main %}

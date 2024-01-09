@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+  }
+
+.header-nav{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    /* box-shadow: 1px 1px 0px rgba(0,0,0,0.1); */
+    width: 85%;
+
+}
+
+footer {
+  background-color: #DEDEDE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000532;
+  padding-bottom: 5em;
+}
+
+.content-align {
+  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-footer {
+  width: 90%;
+  text-align: justify;
+}
+
+.social-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.social-media img {
+  width: 32px;
+  height: 32px;
+}
+
+
+.footer-content {
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+}
+
+.contact-footer ul {
+  margin-left: 1em;
+}
+
+.product-superuser {
+  text-align: center;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.product-superuser a {
+  border-radius: 8px;
+  background: #2F44FF;
+  padding: 0.6em 1.5em;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginn{
+  text-decoration: none;
+  color: black;
+  font-size: 1.4rem;
+    font-weight: 600;
+}
+
+#descnectar{
+  text-decoration: none;
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 600;
+}

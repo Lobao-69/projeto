@@ -1,0 +1,14 @@
+.edit-product {
+    display: flex;
+    gap: 1em;
+    padding: 0.5em;
+}
+
+.edit-product svg {
+    width: 32px;
+    height: 32px;
+}
+
+.product-card {
+    background: none;
+}
